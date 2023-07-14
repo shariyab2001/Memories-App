@@ -23,7 +23,16 @@ const Form = ({ currentId, setCurrentId }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    if (
+      postData.creator === "" ||
+      postData.title === "" ||
+      postData.message === "" ||
+      postData.tags === "" ||
+      postData.selectedFile === ""
+    ) {
+      alert("Please fill all the fields");
+      return;
+    }
     if (currentId === 0) {
       dispatch(createPost(postData));
       clear();
